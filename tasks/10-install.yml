@@ -1,0 +1,41 @@
+---
+
+- set_fact:
+    cpd_release_name: "{{ lookup('pipe', 'date +%Y-%m-%d-%H-%M-%S') }}"
+
+- set_fact:
+    cpd_current_workspace: "{{ cpd_workspace }}/{{ cpd_release_name }}"
+
+- name: Clone project.
+  git:
+    repo: "{{ cpd_project_repo }}"
+    dest: "{{ cpd_current_workspace }}"
+    version: "{{ cpd_project_branch }}"
+
+- name: Check if composer exists.
+  stat:
+    path: "{{ cpd_project_composer_path }}"
+  register: cpd_composer_file
+
+- name: Download composer.
+  command: "curl -sS https://getcomposer.org/installer | php"
+  when: cpd_composer_file.stat.exists == false
+
+- name: Install composer.
+  command: "mv composer.phar {{ cpd_project_composer_path }}"
+  when: cpd_composer_file.stat.exists == false
+
+- name: Update composer.
+  command: "{{ cpd_project_composer_path }} selfupdate"
+  when: cpd_update_composer == true
+
+- name: Detect deploy commit hash.
+  shell: git rev-parse HEAD
+  args:
+    chdir: "{{ cpd_current_workspace }}"
+  register: cpd_release_commit_hash
+
+- name: Run composer install.
+  command: "composer install {{ cpd_install_options }}"
+  args:
+    chdir: "{{ cpd_current_workspace }}"

@@ -1,0 +1,17 @@
+---
+
+- include: "{{ cpd_pre_install_hook }}"
+
+- include: 10-install.yml
+  run_once: true
+  delegate_to: 127.0.0.1
+
+- include: "{{ cpd_post_install_hook }}"
+
+- include: 20-deploy.yml
+
+- include: "{{ cpd_post_deploy_hook }}"
+
+- include: 30-finish.yml
+
+- include: "{{ cpd_post_finish_hook }}"

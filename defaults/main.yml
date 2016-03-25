@@ -1,0 +1,19 @@
+---
+# necessary project vars
+cpd_project_repo: ~
+cpd_project_web_dir: ~
+
+# Defaults
+cpd_workspace: /tmp
+cpd_update_composer: true
+cpd_project_branch: master
+cpd_project_composer_path: "/usr/local/bin/composer"
+cpd_install_options: "--prefer-dist --optimize-autoloader --no-dev --no-interaction"
+cpd_remvove_release_dir: true
+
+# Hooks
+cpd_pre_install_hook: hooks/cpd_pre_install_hook.yml
+cpd_post_install_hook: hooks/cpd_post_install_hook.yml
+cpd_post_archive_hook: hooks/cpd_post_archive_hook.yml
+cpd_post_deploy_hook: hooks/cpd_post_deploy_hook.yml
+cpd_post_finish_hook: hooks/cpd_post_finish_hook.yml

@@ -1,0 +1,14 @@
+---
+
+- name: Live switch.
+  file:
+    src: "{{ cpd_release_dir }}/{{ cpd_release_name }}"
+    dest: "{{ cpd_current_dir }}"
+    state: link
+
+- name: Remove local install.
+  file:
+    path: "{{ cpd_current_workspace }}"
+    state: absent
+  run_once: true
+  delegate_to: 127.0.0.1

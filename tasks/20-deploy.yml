@@ -1,0 +1,15 @@
+---
+
+- set_fact:
+    cpd_current_dir: "{{ cpd_project_web_dir }}/current"
+    cpd_release_dir: "{{ cpd_project_web_dir }}/releases"
+
+- name: Create missing directories.
+  file:
+    state: directory
+    path: "{{ cpd_release_dir }}"
+
+- name: Synchronize release.
+  synchronize:
+    src: "{{ cpd_current_workspace }}"
+    dest: "{{ cpd_release_dir }}"
