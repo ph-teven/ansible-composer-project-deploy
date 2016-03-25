@@ -4,7 +4,7 @@ This role will deploy a php composer project to your inventory.
 2. Deploy: Synchronize with your inventory
 3. Finish: Make a live switch and removes the repository on the local machine
 
-This role will follow the following naming pattern for releases:
+Naming pattern for releases:
 
 ```
 - current -> {{ cpd_project_web_dir }}/releases/YYYY-MM-DD-HH-MM-SS
