@@ -5,6 +5,8 @@
     src: "{{ cpd_release_dir }}/{{ cpd_release_name }}"
     dest: "{{ cpd_current_dir }}"
     state: link
+  become: true
+  become_user: "{{ cpd_www_user }}"
 
 - name: Remove local install.
   file:

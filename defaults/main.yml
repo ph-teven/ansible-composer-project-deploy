@@ -10,6 +10,7 @@ cpd_project_branch: master
 cpd_project_composer_path: "/usr/local/bin/composer"
 cpd_install_options: "--prefer-dist --optimize-autoloader --no-dev --no-interaction"
 cpd_remvove_release_dir: true
+cpd_www_user: www-data
 
 # Hooks
 cpd_pre_install_hook: hooks/cpd_pre_install_hook.yml

@@ -8,8 +8,18 @@
   file:
     state: directory
     path: "{{ cpd_release_dir }}"
+  become: true
+  become_user: "{{ cpd_www_user }}"
 
 - name: Synchronize release.
   synchronize:
     src: "{{ cpd_current_workspace }}"
     dest: "{{ cpd_release_dir }}"
+
+- name: Set permissions.
+  file:
+    path: "{{ cpd_release_dir }}/{{ cpd_release_name }}"
+    owner: "{{ cpd_www_user }}"
+    group: "{{ cpd_www_user }}"
+    state: directory
+    recurse: true
