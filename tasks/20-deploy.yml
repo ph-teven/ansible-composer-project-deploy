@@ -16,6 +16,11 @@
     src: "{{ cpd_current_workspace }}"
     dest: "{{ cpd_release_dir }}"
 
+- name: Run composer install remote.
+  command: "composer install {{ cpd_install_options_remote }}"
+  args:
+    chdir: "{{ cpd_current_workspace }}"
+
 - name: Set permissions.
   file:
     path: "{{ cpd_release_dir }}/{{ cpd_release_name }}"

@@ -35,7 +35,7 @@
     chdir: "{{ cpd_current_workspace }}"
   register: cpd_release_commit_hash
 
-- name: Run composer install.
-  command: "composer install {{ cpd_install_options }}"
+- name: Run composer install local.
+  command: "composer install {{ cpd_install_options_local }}"
   args:
     chdir: "{{ cpd_current_workspace }}"
