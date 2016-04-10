@@ -2,10 +2,10 @@
 
 galaxy_info:
   author: Stefan Beier
-  description:
+  description: Deploy a composer project.
   company:
   license: MIT
   min_ansible_version: 2.0
-  categories:
-    - web
+  categories: [web]
   dependencies: []
+  platforms: []
