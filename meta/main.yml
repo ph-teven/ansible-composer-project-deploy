@@ -7,5 +7,6 @@ galaxy_info:
   license: MIT
   min_ansible_version: 2.0
   categories: [web]
-  dependencies: []
   platforms: []
+
+dependencies: []
